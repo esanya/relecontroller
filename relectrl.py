@@ -11,5 +11,16 @@ webContent = response.read()
 
 dt = icalendar.Calendar.from_ical(webContent)
 
-print(dt)
+#print(dt)
+
+for component in dt.walk():
+    print component.name
+
+    if component.name == "VEVENT":
+        print(component.get('summary'))
+        print(component.get('dtstart'))
+        print(component.get('dtend'))
+        print(component.get('dtstamp'))
+
+
 
